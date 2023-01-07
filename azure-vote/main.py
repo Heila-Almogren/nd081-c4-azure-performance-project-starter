@@ -105,9 +105,15 @@ def index():
 
         # Get current values
         vote1 = r.get(button1).decode('utf-8')
+        properties = {'custom_dimensions': {'Cats Vote': vote1}}
+        logger.info('Cats Vote', extra=properties)
         with tracer.span(name="Cats Vote") as span:
             print("Cats Vote")
+
+
         vote2 = r.get(button2).decode('utf-8')
+        properties = {'custom_dimensions': {'Dogs Vote': vote2}}
+        logger.info('Dogs Vote', extra=properties)
         with tracer.span(name="Dogs Vote") as span:
             print("Dogs Vote")
 
