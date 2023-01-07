@@ -105,17 +105,14 @@ def index():
 
         # Get current values
         vote1 = r.get(button1).decode('utf-8')
-        properties = {'custom_dimensions': {'Cats Vote': vote1}}
-        logger.info('Cats Vote', extra=properties)
-        with tracer.span(name="Cats Vote") as span:
-            print("Cats Vote")
-
+        properties = {'custom_dimensions': {'CatsVote': vote1}}
+        logger.info('CatsVote', extra=properties)
+        tracer.span(name="CatsVote")
 
         vote2 = r.get(button2).decode('utf-8')
-        properties = {'custom_dimensions': {'Dogs Vote': vote2}}
-        logger.info('Dogs Vote', extra=properties)
-        with tracer.span(name="Dogs Vote") as span:
-            print("Dogs Vote")
+        properties = {'custom_dimensions': {'DogsVote': vote2}}
+        logger.info('DogsVote', extra=properties)
+        tracer.span(name="DogsVote")
 
         # Return index with values
         return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2,
@@ -129,12 +126,12 @@ def index():
             r.set(button1, 0)
             r.set(button2, 0)
             vote1 = r.get(button1).decode('utf-8')
-            properties = {'custom_dimensions': {'Cats Vote': vote1}}
-            logger.info('Cats Vote', extra=properties)
+            properties = {'custom_dimensions': {'CatsVote': vote1}}
+            logger.info('CatsVote', extra=properties)
 
             vote2 = r.get(button2).decode('utf-8')
-            properties = {'custom_dimensions': {'Dogs Vote': vote2}}
-            logger.info('Dogs Vote', extra=properties)
+            properties = {'custom_dimensions': {'DogsVote': vote2}}
+            logger.info('DogsVote', extra=properties)
 
             return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2,
                                    title=title)
@@ -147,17 +144,15 @@ def index():
 
             # Get current values
             vote1 = r.get(button1).decode('utf-8')
-            properties = {'custom_dimensions': {'Cats Vote': vote1}}
-            logger.info('Cats Vote', extra=properties)
+            properties = {'custom_dimensions': {'CatsVote': vote1}}
+            logger.info('CatsVote', extra=properties)
 
             vote2 = r.get(button2).decode('utf-8')
-            properties = {'custom_dimensions': {'Dogs Vote': vote2}}
-            logger.info('Dogs Vote', extra=properties)
+            properties = {'custom_dimensions': {'DogsVote': vote2}}
+            logger.info('DogsVote', extra=properties)
 
-            with tracer.span(name="Cats Vote") as span:
-                print("Cats Vote")
-            with tracer.span(name="Dogs Vote") as span:
-                print("Dogs Vote")
+            tracer.span(name="CatsVote")
+            tracer.span(name="DogsVote")
 
             # Return results
             return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2,
