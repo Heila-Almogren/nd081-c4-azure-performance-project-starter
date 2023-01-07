@@ -40,7 +40,7 @@ logger.addHandler(handler)
 # Logging custom Events
 logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=5a5fa264-fe1a-4c6d-9573-8c1978aca526'))
 # Set the logging level
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.INFO)
 
 # Metrics
 # exporter = # TODO: Setup exporter
